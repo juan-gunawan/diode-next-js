@@ -1,5 +1,5 @@
-// import Diode from "react-diode";
-import Diode from '../react-diode/src/DiodePublic';
+import Diode from "react-diode";
+// import Diode from '../react-diode/src/DiodePublic';
 
 export default {
   type: "contentResource",

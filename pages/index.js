@@ -1,6 +1,6 @@
 import React from 'react';
-// import Diode from 'react-diode';
-import Diode from '../react-diode/src/DiodePublic';
+import Diode from 'react-diode';
+// import Diode from '../react-diode/src/DiodePublic';
 
 // Component
 import ImageDisplay from '../components/ImageDisplay';
@@ -23,7 +23,7 @@ class Home extends React.Component {
         isServer: true, 
       };
 
-      return {};
+      // return {};
     }
     
     return { cache: window.__NEXT_DATA__.props.pageProps.cache, isServer: false };
@@ -32,14 +32,15 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
 
-    const cache = props.cache;
+    let cache = props.cache;
 
-    if (!props.isServer && !props.cache) {
+    if (process.browser) {
+      // console.log(window.__NEXT_DATA__.props.pageProps.cache);
       cache = window.__NEXT_DATA__.props.pageProps.cache
     }
 
     this.cache = Diode.createCache(cache);
-    // this.cache = Diode.createCache({});
+    console.log(this.cache.getContents());
   }
 
   render () {
